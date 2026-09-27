@@ -1,41 +1,40 @@
 package com.shubham.simple_crud.Service;
 
 import com.shubham.simple_crud.Repository.Entities.Product;
+import com.shubham.simple_crud.Repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class InventoryService implements ProductService {
 
-    private Map<String, Product> inventory = new HashMap<>(Map.of("123",new Product("123","Detergent",175,3),"157",new Product("157","Shampoo",115,7)));
+    private ProductRepository repo;
+
+    @Autowired
+    public void setRepo(ProductRepository repo) {
+        this.repo = repo;
+    }
 
     public List<Product> getProducts(){
-        List<Product> result = new ArrayList<>();
-        // use String Builder when there is a concatenation of String in a loop
-        for (String id:inventory.keySet()){
-            result.add(inventory.get(id));
-        }
-        return result;
+        return repo.findAll(); // repo methods defined inside jparepository->crudrepository
     }
 
     @Override
-    public Product getProductById(String id) {
-        return inventory.getOrDefault(id,new Product("DUMMY", "PRODUCT NOT FOUND", 0,0));
+    public Optional<Product> getProductById(String id) {
+        return repo.findById(id);
     }
 
     @Override
     public void insertProduct(Product product) {
-        inventory.putIfAbsent(product.getId(),product);
+        repo.save(product);
 
     }
 
     @Override
     public void deleteProductById(String id) {
-        inventory.remove(id);
+        repo.deleteById(id);
     }
 
 }

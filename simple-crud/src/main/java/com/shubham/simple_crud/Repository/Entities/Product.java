@@ -1,11 +1,19 @@
 package com.shubham.simple_crud.Repository.Entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Product {
-    private String id,name;
+
+    @Id
+    private String id;
+    private String name;
     private int price,quantity;
 
     public Product() {
-        //WE MUST HAVE A NO ARGS CONSTRUCTOR
+        // Jackson normally needs a no-args constructor for standard POJO deserialization.
+        // Otherwise, a constructor/factory method must be explicitly configured as a Jackson creator.
         /*Conceptually, Jackson does something like:
         JSON
          ↓
@@ -18,16 +26,14 @@ public class Product {
     }
 
 
-
     public Product(String id, String name, int price) {
+        // Simply present to satisfy jackson 3's behaviour,
+        // This constructor is never called
+
         // Error when this constructor not present and json body only contains (id, name ,price)
         // JSON parse error:
         // Cannot map `null` into type `int` (set `DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES` to 'false' to allow)]
 
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        quantity=99; // NOTE: quantity set as 0 by Jackson, this does not matter
     }
 
     public Product(String id, String name, int price, int quantity) {
