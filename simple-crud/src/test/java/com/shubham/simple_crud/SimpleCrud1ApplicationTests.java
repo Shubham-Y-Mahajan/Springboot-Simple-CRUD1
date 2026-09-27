@@ -1,4 +1,4 @@
-package com.shubham.simple_crud1;
+package com.shubham.simple_crud;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
