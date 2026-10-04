@@ -1,0 +1,47 @@
+2026-10-04 18:48:40 INFO  com.shubham.simple_crud.SimpleCrudApplication - Starting SimpleCrudApplication using Java 24.0.1 with PID 3724 (E:\Java_dev\Springboot Learning\SimpleCrud1\Springboot-Simple-CRUD1\3_simple-crud-with-logging\target\classes started by mahaj in E:\Java_dev\Springboot Learning\SimpleCrud1\Springboot-Simple-CRUD1\3_simple-crud-with-logging)
+2026-10-04 18:48:40 INFO  com.shubham.simple_crud.SimpleCrudApplication - No active profile set, falling back to 1 default profile: "default"
+2026-10-04 18:48:41 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-04 18:48:41 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 116 ms. Found 1 JPA repository interface.
+2026-10-04 18:48:43 INFO  org.springframework.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-10-04 18:48:44 INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-10-04 18:48:44 INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-10-04 18:48:44 INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-04 18:48:44 INFO  org.springframework.boot.web.context.servlet.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4030 ms
+2026-10-04 18:48:45 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-04 18:48:45 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-04 18:48:46 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-04 18:48:46 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-10-04 18:48:47 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4449a60b
+2026-10-04 18:48:47 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-10-04 18:48:47 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-04 18:48:47 INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/simple-crud]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.4
+	Default catalog/schema: simple-crud/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-04 18:48:49 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-04 18:48:49 INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-04 18:48:49 INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-04 18:48:49 WARN  org.springframework.boot.jpa.autoconfigure.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-10-04 18:48:50 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-10-04 18:48:50 INFO  org.springframework.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-10-04 18:48:50 INFO  com.shubham.simple_crud.SimpleCrudApplication - Started SimpleCrudApplication in 11.855 seconds (process running for 14.763)
+2026-10-04 18:49:00 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-04 18:49:00 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-10-04 18:49:00 INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-10-04 18:49:00 INFO  com.shubham.simple_crud.Controller.ProductController - Oye api hit kiya hoye
+2026-10-04 18:49:05 INFO  com.shubham.simple_crud.Controller.ProductController - Oye api hit kiya hoye
+2026-10-04 18:49:06 INFO  com.shubham.simple_crud.Controller.ProductController - Oye api hit kiya hoye
+2026-10-04 18:49:06 INFO  com.shubham.simple_crud.Controller.ProductController - Oye api hit kiya hoye
+2026-10-04 18:49:22 INFO  org.springframework.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-04 18:49:22 INFO  org.springframework.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-10-04 18:49:22 INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-04 18:49:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-10-04 18:49:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

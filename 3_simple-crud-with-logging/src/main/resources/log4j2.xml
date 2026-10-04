@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN"><!-- The threshold of log4j2 library's own logs -->
+
+    <!--
+    Basic hierarchy:
+
+    Configuration
+        ├── Appenders  -> WHERE logs are written
+        └── Loggers    -> WHICH logs are generated and WHERE they are sent
+
+    Logger levels determine which logging events are allowed.
+    Appender filters can further restrict which events reach each destination (Using ThresholdFilter).
+    -->
+    <!--
+    Log levels from least severe to most severe:
+
+    TRACE < DEBUG < INFO < WARN < ERROR < FATAL (FATAL is not supported by slf4j)
+
+    A level of INFO allows INFO, WARN, ERROR and FATAL.
+    A level of DEBUG allows DEBUG, INFO, WARN, ERROR and FATAL.
+    -->
+
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="File" fileName="logs/application.log"> <!--Relative path to cwd by default, can specify absolute paths too-->
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="ControllerLogs" fileName="E:/Java_dev/Springboot Learning/SimpleCrud1/Springboot-Simple-CRUD1/3_simple-crud-with-logging/logs/application_controller.log">
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <RollingFile name="ServiceLogs"
+                     fileName="logs/application_service.log"
+                     filePattern="logs/application_service-%d{yyyy-MM-dd}.log">
+
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+
+        </RollingFile>
+        <!--
+        RollingFile allows the current log file to be rotated/renamed
+        according to a triggering policy (e.g. daily or when size exceeds a limit).
+        -->
+
+    </Appenders>
+
+
+    <Loggers>
+
+        <!-- Logger specifically for the Controller package -->
+        <Logger name="com.shubham.simple_crud.Controller" level="DEBUG">
+            <AppenderRef ref="ControllerLogs"/>
+        </Logger>
+        <!--
+        Logger names normally correspond to Java package/class names.
+
+        A logger for:
+        com.shubham.simple_crud.Controller
+
+        also applies to loggers beneath that package, e.g.:
+        com.shubham.simple_crud.Controller.ProductController
+        -->
+
+        <Logger name="com.shubham.simple_crud.Service" level="DEBUG" additivity="false">
+            <AppenderRef ref="ServiceLogs"/>
+        </Logger>
+        <!--
+        additivity defaults to true.
+
+        Therefore, logs from a child/package logger propagate to its parent
+        logger and eventually to the Root logger.
+
+        additivity="false" prevents this propagation.
+        -->
+
+
+        <!-- Default logger for everything else -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
