@@ -378,6 +378,7 @@ Service     -> contains business logic
   |
   v
 Repository  -> communicates with the database
+Model -> Where @Entity Classes live (table representations)
 ```
 
 ### Controller
@@ -391,6 +392,11 @@ Handles persistence/database interaction.
 
 For example, the controller may depend on a service:
 
+### Model (a sub-layer)
+The package where @Entity classes live. 
+
+JpaRepository / CrudRepository require two generic type arguments:
+JpaRepository<EntityClass, PrimaryKeyDataType>
 ```java
 @RestController
 public class ProductController {
@@ -850,12 +856,14 @@ Use `@Entity` on the class:
 @Entity
 public class Product {
 
-    @Id
+    @Id //  An entity must have a primary/composite key identifier, specified using `@Id` or `@EmbeddedId`.
     private int prodId;
 
     private String prodName;
     private int price;
-
+    
+    @Transient //field has no corresponding database column
+    private double discountedPrice;
     // getters and setters
 }
 ```
@@ -869,9 +877,11 @@ prodName        -> column
 price           -> column
 ```
 
-`@Id` identifies the primary key field.
+Note: The entity can have fields that aren't database columns
 
-An entity must have an identifier, specified using `@Id` or `@EmbeddedId`.
+The discountedPrice field is calculated in Java and is not persisted because it has @Transient from jakarta.persistence.
+For example, you could calculate it using a discount rule. The field exists in the Java entity but has no corresponding database column.
+
 
 > JPA annotations such as `@Entity` and `@Id` are not Spring annotations. They come from the JPA specification (`jakarta.persistence` in modern Spring Boot versions).
 
